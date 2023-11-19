@@ -8,16 +8,17 @@ def is_prime(n):
     return True
 
 def prime_factors_semiprime(semiprime):
+    from math import sqrt as sq
     """Find the prime factors of a semiprime."""
     prime_factors = []
-    for i in range(2, semiprime):
-        if semiprime % i == 0 and is_prime(i):
+    for i in range(2, int(sq(semiprime)) + 1):
+        if semiprime % i == 0:
             prime_factors.append(i)
             prime_factors.append(semiprime // i)
-            break  # stop when two prime factors are found
+            break  
     return prime_factors
 
-if __name__ == "__main__":
+def do_it():
     import sys
     f_name = sys.argv[1]
     with open(f_name) as fp:
@@ -28,7 +29,13 @@ if __name__ == "__main__":
             try:
                 semiprime = int(line.strip())
                 prime_factors = prime_factors_semiprime(semiprime)
-                print("{:d}={:d}*{:d}".format(semiprime, prime_factors[1], prime_factors[0]))
+                if (len(prime_factors) == 2):
+                    print("{:d}={:d}*{:d}".format(semiprime, prime_factors[1], prime_factors[0]))
             except Exception:
                 pass
 
+
+if __name__ == "__main__":
+    import sys
+    if (len(sys.argv) == 2):
+        do_it()    
