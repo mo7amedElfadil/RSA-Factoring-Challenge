@@ -57,7 +57,7 @@ def read_file_all(f_name):
         for line in file_content:
             try:
                 semiprime = line
-                if semiprime < 1000:
+                if semiprime > 2:
                     prime_factors = sorted(prime_factors_semiprime(semiprime))
                 else:
                     prime_factors = sorted(list(factorize_semiprime(semiprime)))
