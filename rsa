@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 import random
-from math import sqrt as sq
 import sys
 
 def isprime(n):
@@ -136,11 +135,6 @@ def factorize_semiprime(semiprime):
     factor2 = semiprime // factor1
     return factor1, factor2
 
-def check_file():
-    if len(sys.argv) != 2:
-        print("factors <file>")
-        exit()
-
 
 def read_file_lines(f_name):
     try:
@@ -158,6 +152,11 @@ def read_file_lines(f_name):
                 print(f"Error processing line: {e}")
     except IOError as e:
         print(str(e))
+
+def check_file():
+    if len(sys.argv) != 2:
+        print("Usage: rsa <file>")
+        exit()
 
 
 def do_it():
