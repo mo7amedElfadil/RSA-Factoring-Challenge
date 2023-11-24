@@ -20,7 +20,7 @@ def pollards_rho(n):
         d = gcd(abs(x - y), n)
 
     if (d == n):
-        return pollards_rho(d))
+        return pollards_rho(d)
     return d
 
 def factorize_semiprime(semiprime):
