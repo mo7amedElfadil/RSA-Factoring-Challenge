@@ -49,35 +49,17 @@ def check_file():
         print("factors <file>")
         exit()
 
-def read_file_all(f_name):
-    try:
-        with open(f_name, "r") as fp:
-            file = fp.read()
-        file_content = sorted(list(map(int, file.splitlines())))
-        for line in file_content:
-            try:
-                semiprime = line
-                if semiprime < 1000:
-                    prime_factors = sorted(prime_factors_semiprime(semiprime))
-                else:
-                    prime_factors = sorted(list(factorize_semiprime(semiprime)))
-                if len(prime_factors) == 2:
-                    print("{:d}={:d}*{:d}".format(semiprime, prime_factors[1], prime_factors[0]))
-            except Exception as e:
-                print(f"Error processing line: {e}")
-    except Exception as e:
-        print(e)
-
 
 def read_file_lines(f_name):
     with open(f_name, "r") as fp:
         prime_factors = []
         line = fp.readline()
         if not line:
-            return
+            return    
         try:
             semiprime = int(line.strip())
-            if semiprime < 1000:
+
+            if semiprime < 10000:
                 prime_factors = sorted(prime_factors_semiprime(semiprime))
             else:
                 prime_factors = sorted(list(factorize_semiprime(semiprime)))
@@ -89,9 +71,7 @@ def read_file_lines(f_name):
 
 def do_it():
     f_name = sys.argv[1]
-    # read_file_all(f_name)
     read_file_lines(f_name)
-
 
 
 check_file()
