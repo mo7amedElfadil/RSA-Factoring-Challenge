@@ -46,7 +46,7 @@ def factorize_semiprime(semiprime):
 
 def check_file():
     if len(sys.argv) != 2:
-        print("Usage: factors <file>")
+        print("factors <file>")
         exit()
 
 def read_file_all(f_name):
@@ -94,7 +94,7 @@ def do_it():
     # read_file_lines(f_name)
 
 
-if __name__ == "__main__":
-    check_file()
-    if (len(sys.argv) == 2):
-        do_it()
+
+check_file()
+if (len(sys.argv) == 2):
+    do_it()
