@@ -1,4 +1,4 @@
-#!/usr/bin/python3.8
+#!/usr/bin/python3
 import random
 from math import sqrt as sq
 import sys
@@ -52,6 +52,7 @@ def check_file():
     if len(sys.argv) != 2:
         print("Usage: factors <file>")
         exit()
+
 def read_file_all(f_name):
     with open(f_name, "r") as fp:
         file = fp.read()
@@ -89,12 +90,12 @@ def read_file_lines(f_name):
 
 
 def do_it():
-    check_file()
     f_name = sys.argv[1]
     # read_file_all(f_name)
     read_file_lines(f_name)
 
 
 if __name__ == "__main__":
+    check_file()
     if (len(sys.argv) == 2):
         do_it()
