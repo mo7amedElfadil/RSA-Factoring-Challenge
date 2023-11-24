@@ -125,7 +125,7 @@ def pollards_rho(n):
         y = (y * y + 1) % n
         d = gcd(abs(x - y), n)
     
-    if not isprime(d):
+    if d == n or not isprime(d):
         return pollards_rho(n)
     return d
 

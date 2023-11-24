@@ -19,6 +19,8 @@ def pollards_rho(n):
         y = (y * y + 1) % n
         d = gcd(abs(x - y), n)
 
+    if (d == n):
+        return pollards_rho(d))
     return d
 
 def factorize_semiprime(semiprime):
