@@ -3,6 +3,24 @@ import random
 from math import isqrt as sq
 import sys
 
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+def prime_factors_semiprime(semiprime):
+    prime_factors = []
+    for i in range(2, int(sq(semiprime)) + 1):
+        if semiprime % i == 0:
+            prime_factors.append(i)
+            prime_factors.append(semiprime // i)
+            break
+    return prime_factors
+
+
 def gcd(a, b):
     while b != 0:
         a, b = b, a % b
@@ -19,8 +37,8 @@ def pollards_rho(n):
         y = (y * y + 1) % n
         d = gcd(abs(x - y), n)
 
-    if (d == n):
-        return pollards_rho(d)
+    # if (d == n):
+    #     return pollards_rho(d)
     return d
 
 def factorize_semiprime(semiprime):
@@ -42,7 +60,10 @@ def read_file_all(f_name):
         file_content = sorted(list(map(int, file.splitlines())))
         for semiprime in file_content:
             try:
-                prime_factors = sorted(list(factorize_semiprime(semiprime)))
+                if semiprime < 1000:
+                    prime_factors = sorted(prime_factors_semiprime(semiprime))
+                else:
+                    prime_factors = sorted(list(factorize_semiprime(semiprime)))
                 if len(prime_factors) == 2:
                     print("{:d}={:d}*{:d}".format(semiprime, prime_factors[1], prime_factors[0]))
             except Exception as e:
