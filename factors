@@ -27,6 +27,8 @@ def gcd(a, b):
     return a
 
 def pollards_rho(n):
+    if n < 2:
+        return
     x = random.randint(2, n - 2)
     y = x
     d = 1
