@@ -82,15 +82,14 @@ def read_file_lines(f_name):
         print(str(e))
 
 def check_file():
-    if len(sys.argv) != 2:
+    if len(argv) != 2:
         print("Usage: rsa <file>")
         exit()
+    return argv[1]
 
 
-def do_it():
-    f_name = sys.argv[1]
+def do_it(f_name):
     read_file_lines(f_name)
 
 
-check_file()
-do_it()
+do_it(check_file())
