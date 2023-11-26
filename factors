@@ -58,7 +58,7 @@ def factorize_semiprime(semiprime):
     return factor1, factor2
 
 def check_file():
-    if len(sys.argv) != 2:
+    if len(argv) != 2:
         print("factors <file>")
         exit()
 
