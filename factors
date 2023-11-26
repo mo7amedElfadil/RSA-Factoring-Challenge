@@ -4,7 +4,9 @@
 
 import random
 from math import isqrt as sq
-from sys import argv,setrecursionlimit 
+from sys import argv, setrecursionlimit
+
+
 setrecursionlimit(10**6)
 primes = [3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
 
@@ -78,7 +80,7 @@ def read_file_lines(f_name):
             semiprime = int(line.strip())
             if semiprime % 2 == 0:
                 prime_factors = 2, semiprime // 2
-            elif semiprime < 10000000:
+            elif semiprime < 10000:
                 prime_factors = prime_factors_semiprime(semiprime)
             else:
                 prime_factors = factorize_semiprime(semiprime)
