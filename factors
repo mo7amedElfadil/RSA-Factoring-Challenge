@@ -71,10 +71,11 @@ def read_file_all(f_name):
             try:
                 if semiprime % 2 == 0:
                     prime_factors = [2, semiprime // 2]  
-                elif semiprime < 10000:
-                    prime_factors = sorted(prime_factors_semiprime(semiprime))
+                # elif semiprime < 10000:
                 else:
-                    prime_factors = sorted(list(factorize_semiprime(semiprime)))
+                    prime_factors = sorted(prime_factors_semiprime(semiprime))
+                # else:
+                    # prime_factors = sorted(list(factorize_semiprime(semiprime)))
                 if len(prime_factors) == 2:
                     print("{:d}={:d}*{:d}".format(semiprime, prime_factors[1], prime_factors[0]))
             except Exception as e:
