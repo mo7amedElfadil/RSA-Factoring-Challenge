@@ -1,6 +1,29 @@
 #!/usr/bin/python3
 import random
-import sys
+from math import isqrt as sq
+from sys import argv, setrecursionlimit
+
+
+setrecursionlimit(10**6)
+primes = [3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
+
+def is_prime(n):
+    if n < 2:
+        return False
+    if n == 2:
+        return True
+    for x in primes:
+        if n % x == 0:
+            if n == x:
+                return True
+            return False
+    # for i in range(3, sq(n) + 1, 2):
+    #     if n % i == 0:
+    #         return False
+    return True
+
+
+
 
 def gcd(a, b):
     while b != 0:
@@ -18,7 +41,7 @@ def pollards_rho(n):
         y = (y * y + 1) % n
         d = gcd(abs(x - y), n)
     
-    if d == n:
+    if d == n or not is_prime(d):
         return pollards_rho(n)
     return d
 
@@ -28,6 +51,17 @@ def factorize_semiprime(semiprime):
         return None
     factor2 = semiprime // factor1
     return factor1, factor2
+
+def prime_factors_semiprime(semiprime):
+    if semiprime % 2 == 0:
+        return 2 , semiprime // 2
+    for i in primes:
+        if semiprime % i == 0:
+            return i , semiprime // i
+    for i in range(101, sq(1000000) + 1, 2):
+        if semiprime % i == 0:
+            return i , semiprime // i
+    return factorize_semiprime(semiprime)
 
 
 def read_file_lines(f_name):
@@ -39,7 +73,7 @@ def read_file_lines(f_name):
                 raise IOError("File is empty")
             try:
                 semiprime = int(line.strip())
-                prime_factors = sorted(list(factorize_semiprime(semiprime)))
+                prime_factors = sorted(list(prime_factors_semiprime(semiprime)))
                 if len(prime_factors) == 2:
                     print("{:d}={:d}*{:d}".format(semiprime, prime_factors[1], prime_factors[0]))
             except Exception as e:
