@@ -1,12 +1,14 @@
 #!/usr/bin/python3
 import random
 from math import isqrt as sq
-import sys
+from sys import argv
 
 def is_prime(n):
     if n < 2:
         return False
-    for i in range(2, int(n**0.5) + 1):
+    if n == 2:
+        return True
+    for i in range(3, sq(n) + 1, 2):
         if n % i == 0:
             return False
     return True
@@ -17,7 +19,7 @@ def prime_factors_semiprime(semiprime):
         prime_factors.append(2)
         prime_factors.append(int(semiprime / 2))
         return prime_factors
-    for i in range(3, int(sq(semiprime)) + 1, 2):
+    for i in range(3, sq(semiprime) + 1, 2):
         if semiprime % i == 0:
             prime_factors.append(i)
             prime_factors.append(int(semiprime / i))
@@ -62,12 +64,14 @@ def check_file():
 
 def read_file_all(f_name):
     try:
-        with open(f_name, "r") as fp:
+        with open(f_name, 'r') as fp:
             file = fp.read()
         file_content = sorted(list(map(int, file.splitlines())))
         for semiprime in file_content:
             try:
-                if semiprime < 10000:
+                if semiprime % 2 == 0:
+                    prime_factors = [2, semiprime // 2]  
+                elif semiprime < 10000:
                     prime_factors = sorted(prime_factors_semiprime(semiprime))
                 else:
                     prime_factors = sorted(list(factorize_semiprime(semiprime)))
@@ -80,8 +84,7 @@ def read_file_all(f_name):
 
 
 def do_it():
-    f_name = sys.argv[1]
-    read_file_all(f_name)
+    read_file_all(argv[1])
 
 
 check_file()
