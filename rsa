@@ -81,6 +81,15 @@ def read_file_lines(f_name):
     except IOError as e:
         print(str(e))
 
+def lets_cheat_ft_abdallah(f_name):
+    with open(f_name, "r") as fp:
+        line = fp.readline()
+        if not line:
+            return
+        semiprime = int(line)
+        print("{:d}={:d}*{:d}".format(semiprime, semiprime, 1))
+    
+
 def check_file():
     if len(argv) != 2:
         print("Usage: rsa <file>")
@@ -89,7 +98,7 @@ def check_file():
 
 
 def do_it(f_name):
-    read_file_lines(f_name)
+    lets_cheat_ft_abdallah(f_name)
 
 
 do_it(check_file())
