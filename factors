@@ -102,7 +102,7 @@ def lets_cheat_ft_abdallah(f_name):
 
 def read_file_all(f_name):
     with open(f_name, 'r') as fp:
-        file = fp.readlien()
+        file = fp.read()
     file_content = sorted(list(map(int, file.splitlines())))
     for semiprime in file_content:
         if semiprime % 2 == 0:
@@ -118,7 +118,7 @@ def read_file_all(f_name):
 
 
 def do_it():
-    read_file_lines(argv[1])
+    read_file_all(argv[1])
 
 
 check_file()
