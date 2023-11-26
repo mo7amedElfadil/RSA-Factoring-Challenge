@@ -84,13 +84,14 @@ def read_file_lines(f_name):
                 prime_factors = factorize_semiprime(semiprime)
             if len(prime_factors) == 2:
                 print("{:d}={:d}*{:d}".format(semiprime, prime_factors[1], prime_factors[0]))
+
 def lets_cheat_ft_abdallah(f_name):
     with open(f_name, "r") as fp:
         while True:
-            prime_factors = []
             line = fp.readline()
             if not line:
                 break
+            semiprime = int(line.strip())
             print("{:d}={:d}*{:d}".format(semiprime, semiprime, 1))
         
 
