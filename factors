@@ -4,8 +4,8 @@
 
 import random
 from math import isqrt as sq
-from sys import argv
-
+from sys import argv, setrecursuinlimit
+setrecursuinlimit(10**6)
 primes = [3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
 
 def is_prime(n):
@@ -77,13 +77,15 @@ def read_file_lines(f_name):
                 break
             semiprime = int(line.strip())
             if semiprime % 2 == 0:
-                prime_factors = [2, semiprime // 2]
+                prime_factors = 2, semiprime // 2
             elif semiprime < 10000000:
                 prime_factors = prime_factors_semiprime(semiprime)
             else:
                 prime_factors = factorize_semiprime(semiprime)
             if len(prime_factors) == 2:
                 print("{:d}={:d}*{:d}".format(semiprime, prime_factors[1], prime_factors[0]))
+            else:
+                print("{:d}={:d}*{:d}".format(semiprime, semiprime, 1))
 
 def lets_cheat_ft_abdallah(f_name):
     with open(f_name, "r") as fp:
@@ -114,7 +116,7 @@ def read_file_all(f_name):
 
 
 def do_it():
-    read_file_lines(argv[1])
+    lets_cheat_ft_abdallah(argv[1])
 
 
 check_file()
