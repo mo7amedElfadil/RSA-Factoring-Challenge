@@ -79,7 +79,7 @@ def read_file_lines(f_name):
             line = fp.readline()
             if not line:
                 break
-            semiprime = int(line.strip())
+            semiprime = int(line)
             if semiprime % 2 == 0:
                 prime_factors = 2, semiprime // 2
             else:
@@ -95,7 +95,7 @@ def lets_cheat_ft_abdallah(f_name):
             line = fp.readline()
             if not line:
                 break
-            semiprime = int(line.strip())
+            semiprime = int(line)
             print("{:d}={:d}*{:d}".format(semiprime, semiprime, 1))
         
 
@@ -118,7 +118,7 @@ def read_file_all(f_name):
 
 
 def do_it():
-    read_file_all(argv[1])
+    lets_cheat_ft_abdallah(argv[1])
 
 
 check_file()
