@@ -34,7 +34,7 @@ def gcd(a, b):
 def pollards_rho(n):
     if n < 2:
         return
-    x = random.randint(2, n - 2)
+    x = random.randint(1, n - 2)
     y = x
     c = random.randint(1, n - 1)
     # c= 1
@@ -45,7 +45,7 @@ def pollards_rho(n):
         y = (y * y + c) % n
         d = gcd(abs(x - y), n)
 
-    if (d == n) or not is_prime(d):
+    if (d == n):
         return pollards_rho(d)
     return d
 
@@ -61,10 +61,9 @@ def prime_factors_semiprime(semiprime):
     for i in primes:
         if semiprime % i == 0:
             return i , semiprime // i
-    if semiprime <= 1000000:
-        for i in range(101, sq(1000000) + 1, 2):
-            if is_prime(i) and semiprime % i == 0:
-                return i , semiprime // i
+    for i in range(101, sq(1000000) + 1, 2):
+        if semiprime % i == 0:
+            return i , semiprime // i
     return factorize_semiprime(semiprime)
 
 
